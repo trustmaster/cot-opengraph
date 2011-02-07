@@ -18,7 +18,7 @@ Lock_members=12345A
 
 [BEGIN_SED_EXTPLUGIN_CONFIG]
 scan_img=01:radio::1:Scan for an image in page text
-app_id=02:string::122322431136154:FaceBook Application ID (optional)
+app_id=02:string:::FaceBook Application ID (optional)
 admins=03:string:::FaceBook admins, comma separated
 type=04:string::article:FaceBook OpenGraph type
 [END_SED_EXTPLUGIN_CONFIG]
