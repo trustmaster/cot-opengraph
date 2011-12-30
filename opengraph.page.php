@@ -1,22 +1,17 @@
 <?php
 /* ====================
-[BEGIN_SED_EXTPLUGIN]
-Code=opengraph
-Part=page
-File=opengraph.page
+[BEGIN_COT_EXT]
 Hooks=page.main
-Tags=
-Order=10
-[END_SED_EXTPLUGIN]
+[END_COT_EXT]
 ==================== */
 
-defined('SED_CODE') or die('Wrong URL');
+defined('COT_CODE') or die('Wrong URL');
 
 /**
  * Sets OpenGraph metas
  *
  * @package opengraph
- * @version 1.0.0
+ * @version 1.1.0
  * @author Trustmaster
  * @copyright (c) 2011 Vladimir Sibirov, Skuola.net
  * @license BSD
@@ -24,14 +19,14 @@ defined('SED_CODE') or die('Wrong URL');
 
 $fb_title = htmlspecialchars($pag['page_title']);
 $fb_desc = htmlspecialchars($pag['page_desc']);
-$fb_url = SED_ABSOLUTE_URL . $pag['page_pageurl'];
+$fb_url = COT_ABSOLUTE_URL . $out['canonical_uri'];
 
 // Search for image in text
-$fb_image = SED_ABSOLUTE_URL . '/plugins/opengraph/img/thumb.jpg';
+$fb_image = COT_ABSOLUTE_URL . 'plugins/opengraph/img/thumb.jpg';
 if ($cfg['plugin']['opengraph']['scan']
 	&& preg_match('`(http://[\w\-\.]+/)?([\w_\-\./]+\.(?:jpg|png))`i', $pag['page_text'], $mt))
 {
-	$fb_image = empty($mt[1]) ? SED_ABSOLUTE_URL . $mt[2] : $mt[0];
+	$fb_image = empty($mt[1]) ? COT_ABSOLUTE_URL . $mt[2] : $mt[0];
 }
 
 $fb_metas = <<<HTM
@@ -50,5 +45,5 @@ if (!empty($cfg['plugin']['opengraph']['app_id']))
 HTM;
 }
 
-$plug_head .= $fb_metas;
+$out['head'] .= $fb_metas;
 ?>
