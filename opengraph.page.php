@@ -23,7 +23,7 @@ $fb_url = COT_ABSOLUTE_URL . $out['canonical_uri'];
 
 // Search for image in text
 $fb_image = COT_ABSOLUTE_URL . 'plugins/opengraph/img/thumb.jpg';
-if ($cfg['plugin']['opengraph']['scan']
+if ($cfg['plugin']['opengraph']['scan_img']
 	&& preg_match('`(http://[\w\-\.]+/)?([\w_\-\./]+\.(?:jpg|png))`i', $pag['page_text'], $mt))
 {
 	$fb_image = empty($mt[1]) ? COT_ABSOLUTE_URL . $mt[2] : $mt[0];
